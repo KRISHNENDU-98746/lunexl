@@ -1,73 +1,88 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake Plan Location Input</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f0f0;
-            padding: 50px;
-        }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        button {
-            background: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        .result {
-            margin-top: 15px;
-            padding: 10px;
-            background: #e8e8e8;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Hub - Vivo Y28</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+}
+.container{
+    max-width:400px;
+    margin:80px auto;
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+input,button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+button{
+    background:#007bff;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+}
+.result{
+    margin-top:15px;
+    padding:10px;
+    border-radius:5px;
+    font-weight:bold;
+}
+.success{
+    background:#d4edda;
+    color:#155724;
+}
+.error{
+    background:#f8d7da;
+    color:#721c24;
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
-    <h2>Find Hub - Fake Plan Location</h2>
+    <h2>Find Hub</h2>
+    <p><b>Device:</b> Vivo Y28</p>
 
-    <label for="deviceName">Device Name:</label>
-    <input type="text" id="deviceName" value="Vivo Y28">
+    <input type="text" id="imei" placeholder="Enter IMEI Number">
 
-    <label for="fakeLocation">Fake Plan Location:</label>
-    <input type="text" id="fakeLocation" placeholder="Location type korun...">
-
-    <button onclick="showResult()">Submit</button>
+    <button onclick="checkIMEI()">Find Device</button>
 
     <div id="output" class="result"></div>
 </div>
 
 <script>
-    function showResult() {
-        let name = document.getElementById("deviceName").value;
-        let loc = document.getElementById("fakeLocation").value;
+function checkIMEI(){
 
-        if (loc.trim() === "") {
-            document.getElementById("output").innerText = "Location ta empty thakte parbe na!";
-        } else {
-            document.getElementById("output").innerText =
-                "Device: " + name + "\nFake Plan Location: " + loc;
-        }
+    // 🔒 Fixed IMEI (fake)
+    const savedIMEI = "865432109876543";
+
+    const location =
+    "kanthal beriya, Neradeul, keshpur, paschim Medinipur";
+
+    let userIMEI = document.getElementById("imei").value;
+    let output = document.getElementById("output");
+
+    if(userIMEI === savedIMEI){
+        output.className = "result success";
+        output.innerText =
+        "IMEI Matched ✅\n\nLast Known Location:\n" + location;
+    }else{
+        output.className = "result error";
+        output.innerText = "IMEI Match koreni ❌\nAccess Denied";
     }
+}
 </script>
 
 </body>
